@@ -53,7 +53,7 @@ jobs:
       - uses: actions/checkout@v2
 
   hello:
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     steps:
       - name: thanksd hello action
         id: hello
