@@ -51,3 +51,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+  hello:
+    runs-on: ubunut-latest
+    steps:
+      - name: thanksd hello action
+        id: hello
+        uses: thanksd/hello-action@v1.1
+        with:
+          who-to-greet: 'Boo'
+      - name: hello output
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        
