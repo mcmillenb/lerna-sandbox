@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "jest": "^26.4.2",
     "lerna": "^3.18.4"
   }
 }

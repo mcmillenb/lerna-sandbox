@@ -1,0 +1,21 @@
+{
+  "name": "say-hello",
+  "version": "1.0.0",
+  "description": "Just log \"hello\" to the console",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/mcmillenb/lerna-sandbox"
+  },
+  "keywords": [
+    "lerna",
+    "sandbox",
+    "demo",
+    "testing"
+  ],
+  "author": "Brian McMillen <brianmcmillen1@gmail.com>",
+  "license": "MIT"
+}
