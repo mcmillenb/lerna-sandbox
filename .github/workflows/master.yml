@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: thanksd hello action
         id: hello
-        uses: thanksd/hello-action@v1.1
+        uses: thanksd/hello-action@v1.2
         with:
           who-to-greet: 'Boo'
       - name: hello output
