@@ -14,11 +14,12 @@ jobs:
 
       - name: restore npm 
         id: restore-npm
-        uses: thanksd/cache-action@v0.2
+        uses: actions/cache@v2
         with:
-          name: npm
           path: ~/.npm
-          trigger: package-lock.json
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
 
       - name: restore lerna
         id: restore-lerna
