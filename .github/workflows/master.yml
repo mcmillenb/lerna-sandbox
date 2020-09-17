@@ -12,14 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: restore npm
+      - name: restore npm 
         id: restore-npm
-        uses: actions/cache@v2
-        with: 
-          path: ~/.npm 
-          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+        uses: thanksd/cache-action@v0.1
+        with:
+          name: npm
+          path: ~/.npm
+          trigger: package-lock.json
 
       - name: restore lerna
         id: restore-lerna
@@ -51,15 +50,3 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-  hello:
-    runs-on: ubuntu-latest
-    steps:
-      - name: thanksd hello action
-        id: hello
-        uses: thanksd/hello-action@v1.2
-        with:
-          who-to-greet: 'Boo'
-      - name: hello output
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
-        
