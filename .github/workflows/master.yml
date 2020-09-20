@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: restore npm 
+      - name: restore npm
         id: restore-npm
         uses: actions/cache@v2
         with:
@@ -34,20 +34,66 @@ jobs:
 
       - name: npm install
         if: steps.restore-npm.outputs.cache-hit != 'true'
-        run: npm i 
+        run: npm i
 
       - name: bootstrap
         if: steps.restore-lerna.outputs.cache-hit != 'true'
         run: npx lerna bootstrap
-  
+
   build:
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-  
-  test: 
+
+      - name: restore npm
+        id: restore-npm
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: restore lerna
+        id: restore-lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: build
+        run: npm run build
+
+  test:
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: restore npm
+        id: restore-npm
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: restore lerna
+        id: restore-lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: test
+        run: npm run test
