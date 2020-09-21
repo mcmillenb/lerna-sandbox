@@ -151,7 +151,10 @@ jobs:
 
       - name: publish prerelease
         if: ${{ github.event_name == 'pull_request' }}
-        run: npm run pub:pre
+        run: |
+          git checkout master
+          npx lerna version prerelease -y
+          npx lerna publish from-git -y
 
       - name: publish patch
         if: ${{ github.event_name == 'push' }}
