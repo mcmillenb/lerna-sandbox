@@ -144,8 +144,9 @@ jobs:
         run: |
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
-          rm ~/.npmrc && touch ~/.npmrc
-          echo "@thanksd:registry=https://npm.pkg.github.com/" > ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+          touch .npmrc
+          echo "@thanksd:registry=https://npm.pkg.github.com/" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
+          cat .npmrc
           npm whoami
           npm run publish
