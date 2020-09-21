@@ -18,5 +18,6 @@
     "testing"
   ],
   "author": "Brian McMillen <brianmcmillen1@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "42d0b59851d7a4d298baaa15a1f431a87fca061a"
 }
