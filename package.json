@@ -4,7 +4,8 @@
   "scripts": {
     "build": "lerna run build",
     "test": "lerna run test",
-    "publish": "lerna publish prerelease -y"
+    "pub:pre": "lerna publish prerelease -y",
+    "pub:patch": "lerna publish patch -y"
   },
   "repository": {
     "type": "git",

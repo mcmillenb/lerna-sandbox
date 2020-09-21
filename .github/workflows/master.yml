@@ -138,7 +138,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
-      - name: publish
+      - name: npm config
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
@@ -147,4 +147,11 @@ jobs:
           touch .npmrc
           echo "registry=https://npm.pkg.github.com/" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
-          npm run publish
+
+      - name: publish prerelease
+        if: ${{ github.event_name == 'pull_request' }}
+        run: npm run pub:pre
+
+      - name: publish patch
+        if: ${{ github.event_name == 'push' }}
+        run: npm run pub:patch
