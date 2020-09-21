@@ -145,7 +145,7 @@ jobs:
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
           touch .npmrc
-          echo "@thanksd:registry=https://npm.pkg.github.com/" > .npmrc
+          echo "registry=https://npm.pkg.github.com/" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
           cat .npmrc
           npm whoami
