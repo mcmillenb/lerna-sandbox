@@ -69,10 +69,10 @@ jobs:
       - name: build
         run: npm run build
 
-      - name: archive
+      - name: save packages
         uses: actions/upload-artifact@v2
         with:
-          name: dist
+          name: packages
           path: |
             packages/**/dist
 
@@ -104,3 +104,39 @@ jobs:
 
       - name: test
         run: npm run test
+
+  publish:
+    needs:
+      - build
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: load packages
+        uses: actions/download-artifact@v2
+        with:
+          name: packages
+
+      - name: restore npm
+        id: restore-npm
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: restore lerna
+        id: restore-lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: publish
+        run: npm run publish

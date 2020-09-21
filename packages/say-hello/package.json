@@ -1,5 +1,5 @@
 {
-  "name": "say-hello",
+  "name": "@thanksd/say-hello",
   "version": "1.0.0",
   "description": "Just log \"hello\" to the console",
   "main": "src/index.js",
