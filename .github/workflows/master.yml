@@ -139,4 +139,7 @@ jobs:
             ${{ runner.os }}-node-modules-
 
       - name: publish
-        run: npm run publish
+        run: |
+          git config --global user.email "brianmcmillen@gmail.com"
+          git config --global user.name "GitHub Action"
+          npm run publish
