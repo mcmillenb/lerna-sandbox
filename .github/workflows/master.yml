@@ -142,6 +142,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo $NPM_TOKEN
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
           npm run publish
