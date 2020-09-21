@@ -144,4 +144,6 @@ jobs:
         run: |
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
+          npm config set registry https://npm.pkg.github.com/thanksd
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
           npm run publish
