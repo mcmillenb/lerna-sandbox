@@ -141,12 +141,11 @@ jobs:
       - name: publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          FOO_TOKEN: hellobrian
         run: |
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
-          npm config set @thanksd:registry https://npm.pkg.github.com/
+          rm ~/.npmrc && touch ~/.npmrc
+          echo "@thanksd:registry=https://npm.pkg.github.com/" > ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-          echo $FOO_TOKEN
           npm whoami
           npm run publish
