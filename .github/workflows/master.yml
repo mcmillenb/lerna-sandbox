@@ -69,6 +69,13 @@ jobs:
       - name: build
         run: npm run build
 
+      - name: archive
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: |
+            packages/**/dist
+
   test:
     needs: setup
     runs-on: ubuntu-latest
