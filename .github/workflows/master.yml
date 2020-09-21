@@ -110,8 +110,6 @@ jobs:
       - build
       - test
     runs-on: ubuntu-latest
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v2
 
@@ -141,6 +139,8 @@ jobs:
             ${{ runner.os }}-node-modules-
 
       - name: publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
