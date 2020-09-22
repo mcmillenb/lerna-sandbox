@@ -151,17 +151,10 @@ jobs:
           echo "registry=https://npm.pkg.github.com/" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
-          echo ${{ github.event.pull_request.title }}
-
       - name: publish prerelease
         if: ${{ github.event_name == 'pull_request' }}
         run: |
-          git checkout master
+          git checkout ${{ github.head_ref }}
           npx lerna version prerelease -y
           npx lerna publish from-git -y
 
