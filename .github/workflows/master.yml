@@ -74,6 +74,7 @@ jobs:
         with:
           name: packages
           path: |
+            apps/**/dist
             packages/**/dist
 
   test:
@@ -145,12 +146,16 @@ jobs:
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
           touch .npmrc
-          echo "registry=https://npm.pkg.github.com/" > .npmrc
+          echo "registry=https://npm.pkg.github.com/thanksd" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
 
       - name: publish prerelease
         if: ${{ github.event_name == 'pull_request' }}
-        run: npm run pub:pre
+        run: |
+          git fetch origin ${{ github.head_ref }} --depth=1
+          git checkout ${{ github.head_ref }} --
+          npx lerna version prerelease -y
+          npx lerna publish from-git -y
 
       - name: publish patch
         if: ${{ github.event_name == 'push' }}

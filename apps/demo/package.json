@@ -1,0 +1,21 @@
+{
+  "name": "@thanksd/demo-app",
+  "version": "0.0.2-alpha.5",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "../../node_modules/.bin/rollup src/index.js -d dist",
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thanksd/lerna-sandbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@thanksd/and-function": "^0.0.2-alpha.5",
+    "@thanksd/say-hello": "^0.0.2-alpha.5"
+  }
+}
