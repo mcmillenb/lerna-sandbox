@@ -7,6 +7,10 @@
     "build": "../../node_modules/.bin/rollup src/index.js -d dist",
     "test": "echo \"Error: no test specified\""
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thanksd/lerna-sandbox.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
