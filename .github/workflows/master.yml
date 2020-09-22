@@ -143,6 +143,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
+          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
           touch .npmrc
