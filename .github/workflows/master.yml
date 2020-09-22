@@ -154,7 +154,7 @@ jobs:
       - name: publish prerelease
         if: ${{ github.event_name == 'pull_request' }}
         run: |
-          git checkout ${{ github.head_ref }}
+          git checkout ${{ github.head_ref }} --
           npx lerna version prerelease -y
           npx lerna publish from-git -y
 
