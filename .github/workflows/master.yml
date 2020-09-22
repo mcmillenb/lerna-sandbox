@@ -113,6 +113,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: load packages
         uses: actions/download-artifact@v2
@@ -143,7 +145,6 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
           git config --global user.email "brianmcmillen@gmail.com"
           git config --global user.name "GitHub Action"
           touch .npmrc
