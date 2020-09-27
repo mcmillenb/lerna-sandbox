@@ -8,4 +8,4 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: thanksd/lerna-action@v0.0.8
+      - uses: thanksd/lerna-action@v0.0.9
