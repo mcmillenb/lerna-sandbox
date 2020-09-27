@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "✨ root",
+			"path": "."
+		},
+		{
+			"name": "🚀 @thanksd/demo-app",
+			"path": "apps/demo"
+		},
+		{
+			"name": "📦 @thanksd/and-function",
+			"path": "packages/and-function"
+		},
+		{
+			"name": "📦 @thanksd/say-hello",
+			"path": "packages/say-hello"
+		}
+	],
+	"settings": {}
+}
