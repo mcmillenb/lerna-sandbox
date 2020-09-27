@@ -8,6 +8,6 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: thanksd/lerna-action@v0.0.16
+      - uses: thanksd/lerna-action@v0.0.17
         with:
           hash: ${{ hashFiles('package-lock.json') }}
