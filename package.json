@@ -2,10 +2,10 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "build": "lerna run build",
-    "test": "lerna run test",
-    "pub:pre": "lerna publish prerelease -y",
-    "pub:patch": "lerna publish patch -y"
+    "build": "npx lerna run build",
+    "test": "npx lerna run test",
+    "pub:pre": "npx lerna publish prerelease -y",
+    "pub:patch": "npx lerna publish patch -y"
   },
   "repository": {
     "type": "git",
