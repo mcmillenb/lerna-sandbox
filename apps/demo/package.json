@@ -1,6 +1,10 @@
 {
   "name": "@thanksd/demo-app",
+<<<<<<< HEAD
   "version": "0.0.2-alpha.6",
+=======
+  "version": "0.0.2",
+>>>>>>> aef6098889c74a2a7f820d2d394fc21025f457ac
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -15,7 +19,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "@thanksd/and-function": "^0.0.2-alpha.6",
     "@thanksd/say-hello": "^0.0.2-alpha.6"
+=======
+    "@thanksd/and-function": "^0.0.2",
+    "@thanksd/say-hello": "^0.0.2"
+>>>>>>> aef6098889c74a2a7f820d2d394fc21025f457ac
   }
 }
