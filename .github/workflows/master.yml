@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.0
+      - uses: thanksd/lerna-action@v0.1.1
 
   build:
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.0
+      - uses: thanksd/lerna-action@v0.1.1
 
       - name: build
         run: npm run build
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.0
+      - uses: thanksd/lerna-action@v0.1.1
 
       - name: test
         run: npm run test
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.0
+      - uses: thanksd/lerna-action@v0.1.1
 
       - name: npm config
         env:
