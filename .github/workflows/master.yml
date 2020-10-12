@@ -48,7 +48,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.2
+      - uses: thanksd/lerna-action@v0.1.3
+        with:
+          thenPublish: 'Y'
 
       - name: npm config
         env:
