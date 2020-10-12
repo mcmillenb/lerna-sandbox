@@ -54,7 +54,6 @@ jobs:
         with:
           then-publish: 'Y'
           git-email: 'brianmcmillen1@gmail.com'
-          npm-registry: 'npm.pkg.github.com/thanksd'
 
       - name: publish prerelease
         if: ${{ github.event_name == 'pull_request' }}
