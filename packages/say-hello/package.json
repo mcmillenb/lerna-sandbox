@@ -1,6 +1,6 @@
 {
   "name": "@thanksd/say-hello",
-  "version": "0.0.10-alpha.3",
+  "version": "0.0.10-alpha.4",
   "description": "Just log \"hello\" to the console",
   "main": "src/index.js",
   "scripts": {
