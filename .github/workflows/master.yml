@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: thanksd/lerna-action@v0.1.19
         env:
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           then-publish: 'Y'
           git-email: 'brianmcmillen1@gmail.com'
