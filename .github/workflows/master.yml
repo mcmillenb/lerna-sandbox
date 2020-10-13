@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.13
+      - uses: thanksd/lerna-action@v0.1.14
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         with:
