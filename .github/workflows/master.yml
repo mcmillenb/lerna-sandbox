@@ -55,3 +55,4 @@ jobs:
         with:
           then-publish: 'Y'
           git-email: 'brianmcmillen1@gmail.com'
+      - run: 'echo "env var is set: $NPM_TOKEN"'
