@@ -1,6 +1,6 @@
 {
   "name": "@thanksd/demo-app",
-  "version": "0.0.10-alpha.5",
+  "version": "0.0.10-alpha.6",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -15,8 +15,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@thanksd/and-function": "^0.0.10-alpha.5",
-    "@thanksd/say-hello": "^0.0.10-alpha.5"
+    "@thanksd/and-function": "^0.0.10-alpha.6",
+    "@thanksd/say-hello": "^0.0.10-alpha.6"
   },
   "gitHead": "911b6bc34359f04e98786a16793444121e5f3cc9"
 }
