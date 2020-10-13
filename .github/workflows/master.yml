@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.19
+      - uses: thanksd/lerna-action@v0.1.20
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
