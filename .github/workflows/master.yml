@@ -6,51 +6,52 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.2
+  # setup:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: thanksd/lerna-action@v0.1.2
 
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.2
+  # build:
+  #   needs: setup
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: thanksd/lerna-action@v0.1.2
 
-      - name: build
-        run: npm run build
+  #     - name: build
+  #       run: npm run build
 
-      - name: save packages
-        uses: actions/upload-artifact@v2
-        with:
-          name: packages
-          path: |
-            apps/**/dist
-            packages/**/dist
+  #     - name: save packages
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: packages
+  #         path: |
+  #           apps/**/dist
+  #           packages/**/dist
 
-  test:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.2
+  # test:
+  #   needs: setup
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: thanksd/lerna-action@v0.1.2
 
-      - name: test
-        run: npm run test
+  #     - name: test
+  #       run: npm run test
 
   publish:
-    needs:
-      - build
-      - test
+    # needs:
+    #   - build
+    #   - test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: thanksd/lerna-action@v0.1.20
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           then-publish: 'Y'
           git-email: 'brianmcmillen1@gmail.com'
