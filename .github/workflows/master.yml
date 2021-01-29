@@ -6,68 +6,52 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.2
+  # setup:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: thanksd/lerna-action@v0.1.2
 
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.2
+  # build:
+  #   needs: setup
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: thanksd/lerna-action@v0.1.2
 
-      - name: build
-        run: npm run build
+  #     - name: build
+  #       run: npm run build
 
-      - name: save packages
-        uses: actions/upload-artifact@v2
-        with:
-          name: packages
-          path: |
-            apps/**/dist
-            packages/**/dist
+  #     - name: save packages
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: packages
+  #         path: |
+  #           apps/**/dist
+  #           packages/**/dist
 
-  test:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.2
+  # test:
+  #   needs: setup
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: thanksd/lerna-action@v0.1.2
 
-      - name: test
-        run: npm run test
+  #     - name: test
+  #       run: npm run test
 
   publish:
-    needs:
-      - build
-      - test
+    # needs:
+    #   - build
+    #   - test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: thanksd/lerna-action@v0.1.2
-
-      - name: npm config
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: |
-          git config --global user.email "brianmcmillen@gmail.com"
-          git config --global user.name "GitHub Action"
-          touch .npmrc
-          echo "registry=https://npm.pkg.github.com/thanksd" > .npmrc
-          echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
-
-      - name: publish prerelease
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          git fetch origin ${{ github.head_ref }} --depth=1
-          git checkout ${{ github.head_ref }} --
-          npx lerna version prerelease -y
-          npx lerna publish from-git -y
-
-      - name: publish patch
-        if: ${{ github.event_name == 'push' }}
-        run: npm run pub:patch
+      - uses: thanksd/lerna-action@v0.1.20
+        with:
+          then-publish: 'Y'
+          git-email: 'brianmcmillen1@gmail.com'
